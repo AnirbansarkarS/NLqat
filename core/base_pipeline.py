@@ -115,6 +115,16 @@ class NLP:
         else:
             raise ValueError(f"Unknown vector store type: {type}")
 
+    def create_llm(self, type="openai", **kwargs):
+        if type == "openai":
+            from models.openai_llm import OpenAILLM
+            return OpenAILLM(**kwargs)
+        elif type == "huggingface":
+            from models.huggingface_llm import HuggingFaceLLM
+            return HuggingFaceLLM(**kwargs)
+        else:
+            raise ValueError(f"Unknown LLM type: {type}")
+
 class Document:
     def __init__(self, text, tokens, lemmas, pos_tags, entities, dependencies, spacy_doc):
         self.text = text

@@ -2,3 +2,5 @@ tf-keras
 scikit-learn
 spacy
 sentence-transformers
+chromadb
+faiss-cpu

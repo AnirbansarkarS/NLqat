@@ -81,6 +81,40 @@ class NLP:
         embeddings = self.embed(texts)
         return self.clusterer_model.cluster(embeddings, texts)
 
+    # --- Vector DB Integration ---
+
+    def create_vector_store(self, store_type: str = "chroma", **kwargs):
+        """
+        Creates and returns a vector store instance.
+        Supported types: 'chroma', 'faiss', 'pinecone'
+        """
+        if store_type == "chroma":
+            from vector_store.chroma_store import ChromaStore
+            return ChromaStore(**kwargs)
+        elif store_type == "faiss":
+            from vector_store.faiss_store import FaissStore
+            return FaissStore(**kwargs)
+        elif store_type == "pinecone":
+            from vector_store.pinecone_store import PineconeStore
+            if PineconeStore is None:
+                raise ImportError("Pinecone client not installed or failed to import.")
+            return PineconeStore(**kwargs)
+        else:
+            raise ValueError(f"Unknown vector store type: {store_type}")
+
+    def create_vector_store(self, type="chroma", **kwargs):
+        if type == "chroma":
+            from vectordb.chroma_store import ChromaStore
+            return ChromaStore(**kwargs)
+        elif type == "faiss":
+            from vectordb.faiss_store import FaissStore
+            return FaissStore(**kwargs)
+        elif type == "pinecone":
+            from vectordb.pinecone_store import PineconeStore
+            return PineconeStore(**kwargs)
+        else:
+            raise ValueError(f"Unknown vector store type: {type}")
+
 class Document:
     def __init__(self, text, tokens, lemmas, pos_tags, entities, dependencies, spacy_doc):
         self.text = text

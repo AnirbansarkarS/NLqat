@@ -4,3 +4,8 @@ spacy
 sentence-transformers
 chromadb
 faiss-cpu
+openai
+transformers
+torch
+accelerate
+ctransformers

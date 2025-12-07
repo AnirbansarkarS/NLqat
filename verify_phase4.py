@@ -1,6 +1,6 @@
-from core.base_pipeline import NLP
-from core.rag import RAGPipeline
-from models.llm_base import LLMBase
+from nlqat.core.base_pipeline import NLP
+from nlqat.core.rag import RAGPipeline
+from nlqat.models.llm_base import LLMBase
 import os
 
 # Mock LLM for testing without keys/heavy models
@@ -46,13 +46,13 @@ def test_phase4():
     print("\nTesting NLP.create_llm factory...")
     try:
         # Just check imports work
-        from models.openai_llm import OpenAILLM
+        from nlqat.models.openai_llm import OpenAILLM
         print("OpenAILLM class found.")
     except ImportError:
         print("OpenAILLM Import Failed.")
 
     try:
-        from models.huggingface_llm import HuggingFaceLLM
+        from nlqat.models.huggingface_llm import HuggingFaceLLM
         print("HuggingFaceLLM class found.")
     except ImportError:
         print("HuggingFaceLLM Import Failed.")

@@ -1,4 +1,4 @@
-from core.base_pipeline import NLP
+from nlqat.core.base_pipeline import NLP
 import time
 
 def test_phase2():

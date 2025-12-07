@@ -1,4 +1,4 @@
-from nlqat.core.base_pipeline import NLP
+from nlqcat.core.base_pipeline import NLP
 import shutil
 import os
 

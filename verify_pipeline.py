@@ -1,5 +1,5 @@
-from nlqat.core.pipeline import Pipeline
-from nlqat.models.mock_llm import MockLLM
+from nlqcat.core.pipeline import Pipeline
+from nlqcat.models.mock_llm import MockLLM
 import shutil
 import os
 

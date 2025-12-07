@@ -1,6 +1,6 @@
-from nlqat.core.base_pipeline import NLP
-from nlqat.core.rag import RAGPipeline
-from nlqat.models.llm_base import LLMBase
+from nlqcat.core.base_pipeline import NLP
+from nlqcat.core.rag import RAGPipeline
+from nlqcat.models.llm_base import LLMBase
 import os
 
 # Mock LLM for testing without keys/heavy models

@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "nlqat"
+name = "nlqcat"
 version = "0.1.0"
 authors = [
   { name="Anirban Sarkar", email="sanirbansarkar@gmail.com" },
@@ -27,8 +27,8 @@ dependencies = [
 openai = ["openai>=1.0.0"]
 
 [project.urls]
-"Homepage" = "https://github.com/AnirbansarkarS/NLqat"
+"Homepage" = "https://github.com/AnirbansarkarS/NLQcat"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["nlqat*"]
+include = ["nlqcat*"]

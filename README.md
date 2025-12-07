@@ -1,22 +1,22 @@
-# NLqat: Natural Language Question Answering Toolkit
+# NLQcat: Natural Language Question Answering Toolkit
 
-**NLqat** is a production-ready, hybrid NLP + GenAI library that unifies classic linguistic analysis (spaCy) with modern semantic search (Vector Databases) and Large Language Models (LLMs) into a single, easy-to-use pipeline.
+**NLQcat** is a production-ready, hybrid NLP + GenAI library that unifies classic linguistic analysis (spaCy) with modern semantic search (Vector Databases) and Large Language Models (LLMs) into a single, easy-to-use pipeline.
 
 ## 📦 Installation
 
 ```bash
-pip install nlqat
+pip install nlqcat
 python -m spacy download en_core_web_sm
 ```
 
 ## 🚀 Quick Start (3-Line Example)
 
 ```python
-from nlqat import Pipeline
+from nlqcat.core.pipeline import Pipeline
 
 pipe = Pipeline(vector_store_type="chroma")
-pipe.add_documents(["NLqat combines linguistic NLP with semantic RAG."])
-print(pipe.query("What does NLqat do?")['answer'])
+pipe.add_documents(["NLQcat combines linguistic NLP with semantic RAG."])
+print(pipe.query("What does NLQcat do?")['answer'])
 ```
 
 ## ✨ Features

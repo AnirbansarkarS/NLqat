@@ -29,21 +29,21 @@ class NLP:
     def embedder(self):
         if self._embedder is None:
             # Import here to avoid circular dependencies or early loading
-            from nlqat.semantic.embedding import Embedder
+            from nlqcat.semantic.embedding import Embedder
             self._embedder = Embedder()
         return self._embedder
 
     @property
     def summarizer_model(self):
         if self._summarizer is None:
-            from nlqat.semantic.summarizer import Summarizer
+            from nlqcat.semantic.summarizer import Summarizer
             self._summarizer = Summarizer()
         return self._summarizer
     
     @property
     def clusterer_model(self):
         if self._clusterer is None:
-            from nlqat.semantic.clustering import Clusterer
+            from nlqcat.semantic.clustering import Clusterer
             self._clusterer = Clusterer()
         return self._clusterer
 
@@ -69,7 +69,7 @@ class NLP:
         return self.embedder.embed(text)
 
     def similarity(self, text1, text2):
-        from nlqat.semantic.similarity import calculate_cosine_similarity
+        from nlqcat.semantic.similarity import calculate_cosine_similarity
         vec1 = self.embed(text1)
         vec2 = self.embed(text2)
         return calculate_cosine_similarity(vec1, vec2)
@@ -89,13 +89,13 @@ class NLP:
         Supported types: 'chroma', 'faiss', 'pinecone'
         """
         if store_type == "chroma":
-            from nlqat.vector_store.chroma_store import ChromaStore
+            from nlqcat.vector_store.chroma_store import ChromaStore
             return ChromaStore(**kwargs)
         elif store_type == "faiss":
-            from nlqat.vector_store.faiss_store import FaissStore
+            from nlqcat.vector_store.faiss_store import FaissStore
             return FaissStore(**kwargs)
         elif store_type == "pinecone":
-            from nlqat.vector_store.pinecone_store import PineconeStore
+            from nlqcat.vector_store.pinecone_store import PineconeStore
             if PineconeStore is None:
                 raise ImportError("Pinecone client not installed or failed to import.")
             return PineconeStore(**kwargs)
@@ -105,10 +105,10 @@ class NLP:
 
     def create_llm(self, type="openai", **kwargs):
         if type == "openai":
-            from nlqat.models.openai_llm import OpenAILLM
+            from nlqcat.models.openai_llm import OpenAILLM
             return OpenAILLM(**kwargs)
         elif type == "huggingface":
-            from nlqat.models.huggingface_llm import HuggingFaceLLM
+            from nlqcat.models.huggingface_llm import HuggingFaceLLM
             return HuggingFaceLLM(**kwargs)
         else:
             raise ValueError(f"Unknown LLM type: {type}")

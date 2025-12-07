@@ -102,18 +102,6 @@ class NLP:
         else:
             raise ValueError(f"Unknown vector store type: {store_type}")
 
-    def create_vector_store(self, type="chroma", **kwargs):
-        if type == "chroma":
-            from vectordb.chroma_store import ChromaStore
-            return ChromaStore(**kwargs)
-        elif type == "faiss":
-            from vectordb.faiss_store import FaissStore
-            return FaissStore(**kwargs)
-        elif type == "pinecone":
-            from vectordb.pinecone_store import PineconeStore
-            return PineconeStore(**kwargs)
-        else:
-            raise ValueError(f"Unknown vector store type: {type}")
 
     def create_llm(self, type="openai", **kwargs):
         if type == "openai":

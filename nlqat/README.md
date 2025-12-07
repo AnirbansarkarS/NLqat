@@ -1,21 +1,35 @@
-# NLqat
+# NLqat: Natural Language Question Answering Toolkit
 
-NLqat is a hybrid NLP and GenAI toolkit that combines classic linguistic analysis (spaCy) with modern semantic search (vector stores, embeddings) and LLM reasoning.
+**NLqat** is a production-ready, hybrid NLP + GenAI library that unifies classic linguistic analysis (spaCy) with modern semantic search (Vector Databases) and Large Language Models (LLMs) into a single, easy-to-use pipeline.
 
-## Installation
+## 📦 Installation
 
 ```bash
 pip install nlqat
+python -m spacy download en_core_web_sm
 ```
 
-## Usage
+## 🚀 Quick Start (3-Line Example)
 
 ```python
-from nlqat.pipeline import Pipeline
-# from nlqat.agents import OpenAIAgent
+from nlqat import Pipeline
 
-pipe = Pipeline(enable_spacy=True, vector_store_type="chroma")
-pipe.add_documents(["Doc 1 content", "Doc 2 content"])
-result = pipe.query("What is in Doc 1?")
-print(result['answer'])
+pipe = Pipeline(vector_store_type="chroma")
+pipe.add_documents(["NLqat combines linguistic NLP with semantic RAG."])
+print(pipe.query("What does NLqat do?")['answer'])
 ```
+
+## ✨ Features
+
+- **Hybrid Analysis**: Seamlessly mixes spaCy's linguistic features (NER, POS tagging) with semantic embeddings.
+- **Unified RAG Pipeline**: Built-in Retrieve-Augmented Generation flow (Query -> Retrieve -> Answer).
+- **Vector Store Support**: Integrated ChromaDB client for local vector storage.
+- **Modular Design**: Plug-and-play components for Loaders, Preprocessors, and Agents.
+- **LLM Ready**: Simple `OpenAIAgent` integration for generative answers.
+
+## 🗺️ Roadmap
+
+- [ ] Support for FAISS and Pinecone vector stores.
+- [ ] Integration with HuggingFace and Anthropic LLMs.
+- [ ] Advanced RAG techniques (Re-ranking, HyDE).
+- [ ] Async support for high-throughput pipelines.

@@ -1,4 +1,4 @@
-from core.base_pipeline import NLP
+from nlqat.core.base_pipeline import NLP
 
 def test_phase1():
     print("Initializing NLP...")

@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nlqat"
+version = "0.1.0"
+authors = [
+  { name="Anirban Sarkar", email="sanirbansarkar@gmail.com" },
+]
+description = "Natural Language Question Answering Toolkit (Hybrid NLP + GenAI)"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "spacy>=3.0.0",
+    "chromadb>=0.4.0",
+    "sentence-transformers>=2.2.0",
+    "numpy",
+]
+
+[project.optional-dependencies]
+openai = ["openai>=1.0.0"]
+
+[project.urls]
+"Homepage" = "https://github.com/AnirbansarkarS/NLqat"

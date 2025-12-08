@@ -12,6 +12,7 @@
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
   [![Python Versions](https://img.shields.io/pypi/pyversions/nlqcat.svg)](https://pypi.org/project/nlqcat/)
   [![Code Style: Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+  [![NLqcat Docs](https://img.shields.io/badge/NLqcat-Documentation-blue?style=for-the-badge)](https://nlqcat.netlify.app/)
 
 </div>
 

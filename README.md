@@ -139,16 +139,23 @@ The NLQcat architecture follows a clean Layered Pattern:
 4.  **Model Layer (`nlqcat.models`)**: Wrappers for LLMs (OpenAI, etc.).
 
 ```mermaid
-graph TD
-    User[User Query] --> Pipeline
-    Pipeline --> NLP[Linguistic Analysis (spaCy)]
-    Pipeline --> Embed[Embedder (SentenceTransformers)]
-    Embed --> VectorDB[(Vector Store)]
-    VectorDB --> RAG[Retrieved Context]
-    RAG --> LLM[LLM (OpenAI/Local)]
-    NLP --> Filter[Metadata Filter]
-    Filter -.-> VectorDB
-    LLM --> Answer[Final Answer]
+flowchart TD
+    U[User Query] --> P[Pipeline]
+
+    P --> S[spaCy NLP<br/>Tokens / POS / NER]
+    P --> E[Embedder<br/>Sentence Transformers]
+
+    E --> V[(Vector Store)]
+    V --> R[Retrieved Context]
+
+    P --> L[LLM]
+
+    R --> L
+    S --> F[Entity / Metadata Filters]
+    F --> V
+
+    L --> A[Final Answer]
+
 ```
 
 ## ⚙️ Configuration

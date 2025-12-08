@@ -118,15 +118,66 @@ from nlqcat.vector_store.chroma_store import ChromaStore
 store = ChromaStore(path="./custom_db")
 ```
 
-### 3. Linguistic Analysis
-Even without a Vector Store, NLQcat is a powerful NLP tool wrapper.
+### 3. Linguistic Analysis (NLP)
+Access standard spaCy features conveniently through the unified `NLP` class.
 
 ```python
+# Initialize
 pipe = Pipeline(enable_spacy=True)
-analysis = pipe.nlp.analyze("Apple is looking at buying U.K. startup for $1 billion")
+doc = pipe.nlp.analyze("Apple is looking at buying U.K. startup for $1 billion")
 
-print(analysis.entities) 
+# 1. Tokens & POS Tags
+print(doc.tokens)   # ['Apple', 'is', 'looking', ...]
+print(doc.pos_tags) # [('Apple', 'PROPN'), ('is', 'AUX'), ...]
+
+# 2. Named Entities (NER)
+print(doc.entities) 
 # [('Apple', 'ORG'), ('U.K.', 'GPE'), ('$1 billion', 'MONEY')]
+
+# 3. Dependency Parsing
+for dep in doc.dependencies:
+    print(f"{dep['text']} --[{dep['dep']}]--> {dep['head']}")
+```
+
+### 4. Semantic Features & GenAI
+NLQcat makes complex semantic operations simple.
+
+#### Embeddings & Similarity
+Generate vector embeddings and calculate cosine similarity.
+
+```python
+pipe = Pipeline()
+
+# Generate Embeddings
+text = "Artificial Intelligence is transforming the world."
+emb = pipe.nlp.embed(text)
+print(f"Dimensions: {emb.shape}")
+
+# Calculate Similarity
+score = pipe.nlp.similarity("I love coding", "Programming is my passion")
+print(f"Similarity Score: {score:.4f}") # High score (e.g., 0.85)
+```
+
+#### Text Summarization
+Built-in abstractive/extractive summarization (defaulting to simple heuristics or configurable models).
+
+```python
+long_text = "Deep learning is part of a broader family of machine learning methods..."
+summary = pipe.nlp.summarize(long_text)
+print(summary)
+```
+
+#### Clustering
+Cluster sentences based on semantic meaning using K-Means.
+
+```python
+sentences = [
+    "The cat sits on the mat.", "Dogs are great pets.", # Animals
+    "Python is a language.", "Java is verbose."         # Coding
+]
+
+clusters = pipe.nlp.cluster(sentences)
+# Returns: {0: ['The cat...', 'Dogs...'], 1: ['Python...', 'Java...']}
 ```
 
 ## 🧩 Architecture

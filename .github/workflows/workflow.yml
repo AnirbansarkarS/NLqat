@@ -17,14 +17,17 @@ jobs:
       with:
         python-version: "3.x"
 
-    - name: Install pypa/build
-      run: python3 -m pip install build --user
+    - name: Clean old build directories
+      run: rm -rf dist/ build/ *.egg-info
 
-    - name: Build a binary wheel and a source tarball
-      run: python3 -m build
+    - name: Install build backend
+      run: pip install build
 
-    - name: Store the distribution packages
-      uses: actions/upload-artifact@v4         # UPDATED
+    - name: Build wheel and source tarball
+      run: python -m build
+
+    - name: Upload distribution packages
+      uses: actions/upload-artifact@v4
       with:
         name: python-package-distributions
         path: dist/
@@ -36,15 +39,16 @@ jobs:
     environment:
       name: pypi
       url: https://pypi.org/p/nlqcat
+
     permissions:
-      id-token: write  # IMPORTANT for trusted publishing
+      id-token: write    # Required for Trusted Publishing
 
     steps:
-    - name: Download all the dists
-      uses: actions/download-artifact@v4       # UPDATED
+    - name: Download built distributions
+      uses: actions/download-artifact@v4
       with:
         name: python-package-distributions
         path: dist/
 
-    - name: Publish distribution 📦 to PyPI
+    - name: Publish to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1

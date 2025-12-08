@@ -9,7 +9,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="nlqcat",
-    version="0.1.0",
+    version="0.1.1",
     author="Anirban-QuantumCAT",
     author_email="sanirban2006@gmail.com",
     url="https://github.com/Anirbansarkars/nlqcat",
